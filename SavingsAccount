@@ -1,0 +1,30 @@
+class SavingsAccount extends Account {
+  private double rate;
+  
+  SavingsAccount() {
+    this("", 0.0, 0.0);
+  }
+  
+  SavingsAccount(
+    java.lang.String holderName, 
+    double amount, 
+    double rate,
+  ) {
+    super(holderName, amount);
+    this.rate = rate;
+  }
+  
+  java.lang.String 	toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append(super.toString());
+    builder.append("\n");
+    builder.append("rate: ");
+    builder.append(this.rate);
+    builder.append("%");
+    return builder.toString();
+  }
+  
+  void 	updateAccount() {
+    this.depositAmount(this.getAccountBalance() * this.rate);
+  }
+}
