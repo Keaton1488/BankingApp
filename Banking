@@ -1,0 +1,75 @@
+abstract class Account implements Transactions {
+  private static int accountIdCounter = 0;
+  private String holder;
+  double balanace;
+  private accountNumber;
+
+  public Account(
+    String customerName, 
+    double initialInvestment,
+  ) {
+    this.holder = customerName;
+    this.balance = initialInvestment;
+    this.accountNumber = Account.getLastAccountId() + 1;
+    Account.accountIdCounter = this.accountNumber;
+  }
+
+  @Override
+  boolean deposit(double depositAmount) {
+    if (depositAmount > 0.0) {
+      balance += depositAmount;
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  double 	getAccountBalance() {
+    return this.balance;
+  }
+  
+  int 	getAccountNumber() {
+    return this.accountNumber  
+  }
+  
+  java.lang.String 	getHolder() {
+    return this.holder;
+  }
+    
+  static int 	getLastAccountId() {
+    return Account.accountIdCounter;
+  }
+  
+  void 	setAccountBalance(double monies) {
+    this.balanace = monies;
+  }
+  
+  void 	setHolder(java.lang.String name) {
+    this.holder = name;
+  }
+  
+  void 	setId(int id) {
+    this.accountNumber = id;
+  }
+    
+  java.lang.String 	toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("Account #");
+    builder.append(this.getAccountNumber());
+    builder.append(" balanace: $");
+    builder.append(this.getAccountBalance());
+    return builder.toString();
+  }
+    
+  abstract void 	updateAccount();
+    
+  @Override
+  boolean withdraw(double withdrawAmount) {
+    if (withdraw > this.getAccountBalance()) {
+      return false;
+    } else {
+      this.balance -= withdrawAmount;
+      return true;
+    }
+  }
+}
