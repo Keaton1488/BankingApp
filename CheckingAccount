@@ -1,0 +1,16 @@
+class CheckingAccount extends Account {
+  double costPerMonth;
+  public CheckingAccount(
+    java.lang.String holderName, 
+    double amount, 
+    double costPerMonth) {
+ 
+  @Override
+  public void updateAccount() {
+    this.withdraw(costPerMonth);
+  }
+    
+  public String toString() {
+    return ""; /// stuff
+  }
+ }
